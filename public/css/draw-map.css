@@ -1,0 +1,14 @@
+.cell {
+    width: 70px;
+    height: 70px;
+}
+.free-cell {
+    border: dotted;
+}
+.row-styled {
+    margin-left: auto;
+}
+
+.block-cell {
+    background-image: url("/images/block.jpg");
+}

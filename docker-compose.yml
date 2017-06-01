@@ -1,0 +1,55 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: robomaze-nginx
+    restart: always
+    volumes:
+      - ./:/var/www:ro
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - nginx-proxy
+      - default
+    environment:
+      VIRTUAL_HOST: robomaze.k-3soft.com
+  phpMyAdmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: robomaze-phpmyadmin
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: spass000
+      VIRTUAL_HOST: pma.robomaze.k-3soft.com
+    networks:
+      - nginx-proxy
+      - default
+    links:
+      - mysql:db
+    depends_on:
+      - "mysql"
+  php:
+    build: ./docker/php
+    container_name: robomaze-php
+    restart: always
+    volumes:
+      - ./:/var/www
+      - composer_cache:/home/docker/.composer/cache
+    depends_on:
+      - "mysql"
+  mysql:
+    image: mariadb
+    container_name: robomaze-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: spass000
+      MYSQL_DATABASE: robomaze
+  redis:
+    image: redis:latest
+    container_name: robomaze-redis
+    restart: always
+
+volumes:
+  composer_cache:
+networks:
+  nginx-proxy:
+    external:
+      name: serverservices_default
