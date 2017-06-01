@@ -1,0 +1,8 @@
+Endpoint "maps" has next methods:
+GET http://robomaze.k-3soft.com/api/v1/maps - get all maps
+GET http://robomaze.k-3soft.com/api/v1/maps/:map_id - get map by ID
+POST http://robomaze.k-3soft.com/api/v1/maps - create NEW map
+{"settings":"your string with any settings you need"}
+PUT http://robomaze.k-3soft.com/api/v1/maps/:map_id - update map by ID
+{"settings":"your string with any settings you need"}
+DELETE http://robomaze.k-3soft.com/api/v1/maps/:map_id - delete map by ID
