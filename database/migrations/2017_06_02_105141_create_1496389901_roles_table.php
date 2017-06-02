@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create1496220970MapsTable extends Migration
+class Create1496389901RolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class Create1496220970MapsTable extends Migration
      */
     public function up()
     {
-        if(! Schema::hasTable('maps')) {
-            Schema::create('maps', function (Blueprint $table) {
+        if(! Schema::hasTable('roles')) {
+            Schema::create('roles', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('settings')->nullable();
+                $table->string('title');
                 
                 $table->timestamps();
                 
@@ -30,6 +30,6 @@ class Create1496220970MapsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maps');
+        Schema::dropIfExists('roles');
     }
 }

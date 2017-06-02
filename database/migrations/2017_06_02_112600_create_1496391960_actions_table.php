@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create1496220770RolesTable extends Migration
+class Create1496391960ActionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class Create1496220770RolesTable extends Migration
      */
     public function up()
     {
-        if(! Schema::hasTable('roles')) {
-            Schema::create('roles', function (Blueprint $table) {
+        if(! Schema::hasTable('actions')) {
+            Schema::create('actions', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('title');
+                $table->string('name');
                 
                 $table->timestamps();
                 
@@ -30,6 +30,6 @@ class Create1496220770RolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('actions');
     }
 }

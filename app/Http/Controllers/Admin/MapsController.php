@@ -107,9 +107,11 @@ class MapsController extends Controller
         if (! Gate::allows('map_view')) {
             return abort(401);
         }
+        $localized_maps = \App\LocalizedMap::where('map_id', $id)->get();
+
         $map = Map::findOrFail($id);
 
-        return view('admin.maps.show', compact('map'));
+        return view('admin.maps.show', compact('map', 'localized_maps'));
     }
 
 

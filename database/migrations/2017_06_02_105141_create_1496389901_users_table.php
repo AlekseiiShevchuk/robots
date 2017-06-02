@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create1496220770UsersTable extends Migration
+class Create1496389901UsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class Create1496220770UsersTable extends Migration
                 $table->string('email');
                 $table->string('password');
                 $table->integer('role_id')->unsigned()->nullable();
-                $table->foreign('role_id', '41344_592e8462de4f4')->references('id')->on('roles')->onDelete('cascade');
+                $table->foreign('role_id', '41868_5931190ddb107')->references('id')->on('roles')->onDelete('cascade');
                 $table->string('remember_token')->nullable();
                 
                 $table->timestamps();

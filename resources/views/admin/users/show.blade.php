@@ -24,6 +24,14 @@
                             <th>@lang('quickadmin.users.fields.role')</th>
                             <td>{{ $user->role->title or '' }}</td>
                         </tr>
+                        <tr>
+                            <th>@lang('quickadmin.users.fields.device-id')</th>
+                            <td>{{ $user->device_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.users.fields.language')</th>
+                            <td>{{ $user->language->name or '' }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>

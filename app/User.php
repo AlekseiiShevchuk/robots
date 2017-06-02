@@ -14,11 +14,13 @@ use Hash;
  * @property string $password
  * @property string $role
  * @property string $remember_token
+ * @property string $device_id
+ * @property string $language
 */
 class User extends Authenticatable
 {
     use Notifiable;
-    protected $fillable = ['name', 'email', 'password', 'remember_token', 'role_id'];
+    protected $fillable = ['name', 'email', 'password', 'remember_token', 'device_id', 'role_id', 'language_id'];
     
     
     /**
@@ -40,10 +42,24 @@ class User extends Authenticatable
     {
         $this->attributes['role_id'] = $input ? $input : null;
     }
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setLanguageIdAttribute($input)
+    {
+        $this->attributes['language_id'] = $input ? $input : null;
+    }
     
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+    
+    public function language()
+    {
+        return $this->belongsTo(Language::class, 'language_id');
     }
     
     

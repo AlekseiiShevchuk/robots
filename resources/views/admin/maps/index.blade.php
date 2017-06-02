@@ -35,7 +35,7 @@
                                     <td></td>
                                 @endcan
 
-                                <td>{{ $map->settings }}</td>
+                                <td>{!! $map->settings !!}</td>
                                 <td>
                                     @can('map_view')
                                     <a href="{{ route('admin.maps.show',[$map->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>

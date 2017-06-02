@@ -24,6 +24,7 @@ class UpdateMapsRequest extends FormRequest
     {
         return [
             
+            'settings' => 'required',
         ];
     }
 }

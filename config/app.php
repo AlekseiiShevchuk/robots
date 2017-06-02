@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Robots Admin Panel v1',
+    'name' => 'Robomaze Admin Panel v2',
 
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +182,8 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
         
         /*
          * Application Service Providers...

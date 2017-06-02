@@ -23,6 +23,7 @@ class StoreMapsRequest extends FormRequest
     public function rules()
     {
         return [
+            'settings' => 'required',
         ];
     }
 }

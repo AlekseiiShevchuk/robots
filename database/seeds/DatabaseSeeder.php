@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         if (\App\User::all()->first() == null) {
             $this->call(UserSeed::class);
         }
+        if (\App\Language::all()->first() == null) {
+            $this->call(LanguagesSeed::class);
+        }
 
     }
 }

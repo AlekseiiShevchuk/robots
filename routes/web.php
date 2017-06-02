@@ -22,7 +22,24 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
+    Route::resource('languages', 'Admin\LanguagesController');
     Route::resource('maps', 'Admin\MapsController');
     Route::post('maps_mass_destroy', ['uses' => 'Admin\MapsController@massDestroy', 'as' => 'maps.mass_destroy']);
+    Route::resource('localized_maps', 'Admin\LocalizedMapsController');
+    Route::post('localized_maps_mass_destroy', ['uses' => 'Admin\LocalizedMapsController@massDestroy', 'as' => 'localized_maps.mass_destroy']);
+    Route::resource('actions', 'Admin\ActionsController');
+    Route::post('actions_mass_destroy', ['uses' => 'Admin\ActionsController@massDestroy', 'as' => 'actions.mass_destroy']);
+    Route::resource('localized_actions', 'Admin\LocalizedActionsController');
+    Route::post('localized_actions_mass_destroy', ['uses' => 'Admin\LocalizedActionsController@massDestroy', 'as' => 'localized_actions.mass_destroy']);
+
+    Route::resource('translation_items', 'Admin\TranslationItemsController');
+    Route::post('translation_items_mass_destroy',
+        ['uses' => 'Admin\TranslationItemsController@massDestroy', 'as' => 'translation_items.mass_destroy']);
+    Route::put('translation_items_mass_update',
+        ['uses' => 'Admin\TranslationItemsController@massUpdate'])->name('translation_items.mass_update');
+
+    Route::post('/excel-import', 'Admin\TranslationItemsController@importExcel');
+
+    Route::get('/excel-export/{type}', 'Admin\TranslationItemsController@exportExcel');
 
 });

@@ -1,32 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
-    <h3 class="page-title">Adding new map</h3>
-    <div id="app">
+    <h3 class="page-title">@lang('quickadmin.maps.title')</h3>
+    {!! Form::open(['method' => 'POST', 'route' => ['admin.maps.store']]) !!}
 
-        <div class="badge">Length of the playing square</div>
-        <input v-model.number="x_length" number type="number" min="1" max="12" class="input input-circle"
-               :disabled="disabled"><br>
-
-        <div class="badge">Height of the playing square</div>
-        <input v-model.number="y_length" number type="number" min="1" max="12" :disabled="disabled"><br>
-
-        <button @click="drow" class="btn btn-primary":disabled="disabled">Draw square</button><br>
-
-        <template
-                v-if="drew">
-            <div v-for="(y, y_index) in y_length" class="row row-styled">
-                <div v-for="(x, x_index) in x_length"
-                        :class="[cellClass(x,y_length - y_index)]"
-                        @click="saveCurrentCellSettings(x,y_length - y_index)">
-                x = @{{x}}; y = @{{y_length - y_index}};
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @lang('quickadmin.qa_create')
+        </div>
+        
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('settings', 'Settings*', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('settings', old('settings'), ['class' => 'form-control ', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('settings'))
+                        <p class="help-block">
+                            {{ $errors->first('settings') }}
+                        </p>
+                    @endif
                 </div>
-
             </div>
-
-    </template>
+            
+        </div>
     </div>
-    <script src="/js/create_map.js"></script>
+
+    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::close() !!}
 @stop
 

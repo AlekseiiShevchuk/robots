@@ -47,6 +47,15 @@
                 </ul>
             </li>
             @endcan
+            @can('language_access')
+            <li class="{{ $request->segment(2) == 'languages' ? 'active' : '' }}">
+                <a href="{{ route('admin.languages.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.languages.title')</span>
+                </a>
+            </li>
+            @endcan
+            
             @can('map_access')
             <li class="{{ $request->segment(2) == 'maps' ? 'active' : '' }}">
                 <a href="{{ route('admin.maps.index') }}">
@@ -55,6 +64,39 @@
                 </a>
             </li>
             @endcan
+            
+            @can('localized_map_access')
+            <li class="{{ $request->segment(2) == 'localized_maps' ? 'active' : '' }}">
+                <a href="{{ route('admin.localized_maps.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.localized-maps.title')</span>
+                </a>
+            </li>
+            @endcan
+            
+            @can('action_access')
+            <li class="{{ $request->segment(2) == 'actions' ? 'active' : '' }}">
+                <a href="{{ route('admin.actions.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.actions.title')</span>
+                </a>
+            </li>
+            @endcan
+            
+            @can('localized_action_access')
+            <li class="{{ $request->segment(2) == 'localized_actions' ? 'active' : '' }}">
+                <a href="{{ route('admin.localized_actions.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.localized-actions.title')</span>
+                </a>
+            </li>
+            @endcan
+            <li class="{{ $request->segment(2) == 'translation_items' ? 'active' : '' }}">
+                <a href="{{ route('admin.translation_items.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">Translation Items</span>
+                </a>
+            </li>
             
 
             

@@ -24,7 +24,6 @@
 <![endif]-->
 
 <link href="{{ url('adminlte/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="/css/draw-map.css" rel="stylesheet">
 <link rel="stylesheet"
       href="{{ url('quickadmin/css') }}/select2.min.css"/>
 <link href="{{ url('adminlte/css/AdminLTE.min.css') }}" rel="stylesheet">

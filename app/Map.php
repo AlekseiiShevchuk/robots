@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Map
  *
  * @package App
- * @property string $settings
+ * @property text $settings
 */
 class Map extends Model
 {

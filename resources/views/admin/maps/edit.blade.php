@@ -13,8 +13,8 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('settings', 'Settings', ['class' => 'control-label']) !!}
-                    {!! Form::text('settings', old('settings'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::label('settings', 'Settings*', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('settings', old('settings'), ['class' => 'form-control ', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('settings'))
                         <p class="help-block">
