@@ -2,14 +2,13 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.languages.title')</h3>
-    
-    {!! Form::model($language, ['method' => 'PUT', 'route' => ['admin.languages.update', $language->id], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'route' => ['admin.languages.store'], 'files' => true,]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            @lang('quickadmin.qa_edit')
+            @lang('quickadmin.qa_create')
         </div>
-
+        
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
@@ -39,7 +38,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('is_active_for_admin', 'Is active for admin*', ['class' => 'control-label']) !!}
                     {!! Form::hidden('is_active_for_admin', 0) !!}
-                    {!! Form::checkbox('is_active_for_admin', 1, old('is_active_for_admin')) !!}
+                    {!! Form::checkbox('is_active_for_admin', 1, false, ['required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('is_active_for_admin'))
                         <p class="help-block">
@@ -52,7 +51,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('is_active_for_users', 'Is active for users*', ['class' => 'control-label']) !!}
                     {!! Form::hidden('is_active_for_users', 0) !!}
-                    {!! Form::checkbox('is_active_for_users', 1, old('is_active_for_users')) !!}
+                    {!! Form::checkbox('is_active_for_users', 1, false, ['required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('is_active_for_users'))
                         <p class="help-block">
@@ -63,9 +62,6 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    @if ($language->flag_image)
-                        <a href="{{ asset('uploads/'.$language->flag_image) }}" target="_blank"><img src="{{ asset('uploads/thumb/'.$language->flag_image) }}"></a>
-                    @endif
                     {!! Form::label('flag_image', 'Flag image', ['class' => 'control-label']) !!}
                     {!! Form::file('flag_image', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
                     {!! Form::hidden('flag_image_max_size', 8) !!}
@@ -83,7 +79,7 @@
         </div>
     </div>
 
-    {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop
 

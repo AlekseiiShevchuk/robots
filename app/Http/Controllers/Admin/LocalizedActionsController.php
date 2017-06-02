@@ -40,7 +40,7 @@ class LocalizedActionsController extends Controller
         if (! Gate::allows('localized_action_create')) {
             return abort(401);
         }
-        $languages = \App\Language::get()->pluck('name', 'id')->prepend('Please select', '');$actions = \App\Action::get()->pluck('name', 'id')->prepend('Please select', '');
+        $languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');$actions = \App\Action::get()->pluck('name', 'id')->prepend('Please select', '');
 
         return view('admin.localized_actions.create', compact('languages', 'actions'));
     }
@@ -48,7 +48,7 @@ class LocalizedActionsController extends Controller
     /**
      * Store a newly created LocalizedAction in storage.
      *
-     * @param  \App\Http\Requests\StoreLocalizedActionsRequest  $request
+     * @param  \App\Http\Requests\Admin\StoreLocalizedActionsRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreLocalizedActionsRequest $request)
@@ -76,7 +76,7 @@ class LocalizedActionsController extends Controller
         if (! Gate::allows('localized_action_edit')) {
             return abort(401);
         }
-        $languages = \App\Language::get()->pluck('name', 'id')->prepend('Please select', '');$actions = \App\Action::get()->pluck('name', 'id')->prepend('Please select', '');
+        $languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');$actions = \App\Action::get()->pluck('name', 'id')->prepend('Please select', '');
 
         $localized_action = LocalizedAction::findOrFail($id);
 
@@ -86,7 +86,7 @@ class LocalizedActionsController extends Controller
     /**
      * Update LocalizedAction in storage.
      *
-     * @param  \App\Http\Requests\UpdateLocalizedActionsRequest  $request
+     * @param  \App\Http\Requests\Admin\UpdateLocalizedActionsRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

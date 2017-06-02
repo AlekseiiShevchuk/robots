@@ -40,7 +40,7 @@ class LocalizedMapsController extends Controller
         if (! Gate::allows('localized_map_create')) {
             return abort(401);
         }
-        $maps = \App\Map::get()->pluck('settings', 'id')->prepend('Please select', '');$languages = \App\Language::get()->pluck('name', 'id')->prepend('Please select', '');
+        $maps = \App\Map::get()->pluck('settings', 'id')->prepend('Please select', '');$languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');
 
         return view('admin.localized_maps.create', compact('maps', 'languages'));
     }
@@ -48,7 +48,7 @@ class LocalizedMapsController extends Controller
     /**
      * Store a newly created LocalizedMap in storage.
      *
-     * @param  \App\Http\Requests\StoreLocalizedMapsRequest  $request
+     * @param  \App\Http\Requests\Admin\StoreLocalizedMapsRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreLocalizedMapsRequest $request)
@@ -76,7 +76,7 @@ class LocalizedMapsController extends Controller
         if (! Gate::allows('localized_map_edit')) {
             return abort(401);
         }
-        $maps = \App\Map::get()->pluck('settings', 'id')->prepend('Please select', '');$languages = \App\Language::get()->pluck('name', 'id')->prepend('Please select', '');
+        $maps = \App\Map::get()->pluck('settings', 'id')->prepend('Please select', '');$languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');
 
         $localized_map = LocalizedMap::findOrFail($id);
 
@@ -86,7 +86,7 @@ class LocalizedMapsController extends Controller
     /**
      * Update LocalizedMap in storage.
      *
-     * @param  \App\Http\Requests\UpdateLocalizedMapsRequest  $request
+     * @param  \App\Http\Requests\Admin\UpdateLocalizedMapsRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

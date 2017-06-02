@@ -43,7 +43,7 @@ class ActionsController extends Controller
     /**
      * Store a newly created Action in storage.
      *
-     * @param  \App\Http\Requests\StoreActionsRequest  $request
+     * @param  \App\Http\Requests\Admin\StoreActionsRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreActionsRequest $request)
@@ -78,7 +78,7 @@ class ActionsController extends Controller
     /**
      * Update Action in storage.
      *
-     * @param  \App\Http\Requests\UpdateActionsRequest  $request
+     * @param  \App\Http\Requests\Admin\UpdateActionsRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

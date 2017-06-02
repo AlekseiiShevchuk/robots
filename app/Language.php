@@ -27,4 +27,14 @@ class Language extends Model
 
         return $columns;
     }
+
+    static function isActiveForAdmin()
+    {
+        return self::where('is_active_for_admin', 1)->get();
+    }
+
+    static function isActiveForUsers()
+    {
+        return self::where('is_active_for_users', 1)->get();
+    }
 }

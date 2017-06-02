@@ -43,7 +43,7 @@ class MapsController extends Controller
     /**
      * Store a newly created Map in storage.
      *
-     * @param  \App\Http\Requests\StoreMapsRequest  $request
+     * @param  \App\Http\Requests\Admin\StoreMapsRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreMapsRequest $request)
@@ -78,7 +78,7 @@ class MapsController extends Controller
     /**
      * Update Map in storage.
      *
-     * @param  \App\Http\Requests\UpdateMapsRequest  $request
+     * @param  \App\Http\Requests\Admin\UpdateMapsRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
