@@ -26,7 +26,7 @@ class LanguagesController extends Controller
             $item = ['language' => $language->abbreviation];
             foreach ($translations as $translation) {
                 $value = 'value_' . $language->abbreviation;
-                $item['translations'][] = [$translation->value_name => $translation->$value];
+                $item['translations'][] = ['key' => $translation->value_name, 'value' => $translation->$value];
             }
             $langCollection->add($item);
         }
