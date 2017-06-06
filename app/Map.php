@@ -11,7 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 */
 class Map extends Model
 {
-    protected $fillable = ['settings'];
+    protected $fillable = ['settings', 'name'];
+
+    public function available_actions()
+    {
+        return $this->belongsToMany(Action::class, 'action_map');
+    }
     
     
 }

@@ -11,8 +11,20 @@
 
 .block-cell {
     background-image: url("/images/block.jpg");
+    background-size: cover;
+}
+
+.diamond-cell {
+    background-image: url("/images/diamond.jpg");
+    background-size: cover;
+}
+
+.finish-cell {
+    background-image: url("/images/finish.jpg");
+    background-size: cover;
 }
 
 .start-cell {
-    background-image: url("/images/block.jpg");
+    background-image: url("/images/start.jpg");
+    background-size: cover;
 }

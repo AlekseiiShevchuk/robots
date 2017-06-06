@@ -22,6 +22,7 @@
                             <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                         @endcan
 
+                        <th>name</th>
                         <th>@lang('quickadmin.maps.fields.settings')</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -35,6 +36,7 @@
                                     <td></td>
                                 @endcan
 
+                                <td>{{ $map->name }}</td>
                                 <td>{!! $map->settings !!}</td>
                                 <td>
                                     @can('map_view')

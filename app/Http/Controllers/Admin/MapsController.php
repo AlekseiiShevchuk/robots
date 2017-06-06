@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\LocalizedMap;
 use App\Map;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -37,7 +38,9 @@ class MapsController extends Controller
         if (! Gate::allows('map_create')) {
             return abort(401);
         }
-        return view('admin.maps.create');
+        $available_actions = \App\Action::get()->pluck('name', 'id');
+
+        return view('admin.maps.create', compact('available_actions'));
     }
 
     /**
@@ -52,7 +55,16 @@ class MapsController extends Controller
             return abort(401);
         }
         $map = Map::create($request->all());
+        $map->available_actions()->sync(array_filter((array)$request->input('available_actions')));
 
+/*        foreach ($request->get('languages') as $language_id => $inputLocalizedData) {
+            LocalizedMap::create([
+                'title' => $inputLocalizedData['name'],
+                'description' => $inputLocalizedData['description'],
+                'language_id' => $language_id,
+                'map_id' => $map->id,
+            ]);
+        }*/
 
 
         return redirect()->route('admin.maps.index');
@@ -70,9 +82,11 @@ class MapsController extends Controller
         if (! Gate::allows('map_edit')) {
             return abort(401);
         }
+        $available_actions = \App\Action::get()->pluck('name', 'id');
+
         $map = Map::findOrFail($id);
 
-        return view('admin.maps.edit', compact('map'));
+        return view('admin.maps.edit', compact('map', 'available_actions'));
     }
 
     /**
@@ -89,6 +103,7 @@ class MapsController extends Controller
         }
         $map = Map::findOrFail($id);
         $map->update($request->all());
+        $map->available_actions()->sync(array_filter((array)$request->input('available_actions')));
 
 
 

@@ -1,5 +1,5 @@
 <tr data-index="{{ $index }}">
-    <td>{!! Form::text('content_blocks['.$index.'][value_name]', old('content_blocks['.$index.'][value_name]', isset($field) ? $field->value_name: ''), ['class' => 'form-control', 'disabled']) !!}</td>
+    <td>{!! Form::text('content_blocks['.$index.'][value_name]', old('content_blocks['.$index.'][value_name]', isset($field) ? $field->value_name: ''), ['class' => 'form-control', /*'disabled'*/]) !!}</td>
 
     @foreach($languages as $language)
         @php($value_name = 'value_' . $language->abbreviation)

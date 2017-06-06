@@ -12,13 +12,20 @@
 
         <div class="panel-body">
             <div class="row">
+                <div class="col-xs-3 form-group">
+                    {!! Form::label('name', 'Name*', ['class' => 'control-label']) !!}
+                    {!! Form::text('name', old('name'), ['class' => 'form-control ', 'placeholder' => '', 'required' => '']) !!}
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('settings', 'Settings*', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('settings', old('settings'), ['class' => 'form-control ', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::label('available_actions', 'Available actions', ['class' => 'control-label']) !!}
+                    {!! Form::select('available_actions[]', $available_actions, old('available_actions') ? old('available_actions') : $map->available_actions->pluck('id')->toArray(), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('settings'))
+                    @if($errors->has('available_actions'))
                         <p class="help-block">
-                            {{ $errors->first('settings') }}
+                            {{ $errors->first('available_actions') }}
                         </p>
                     @endif
                 </div>
