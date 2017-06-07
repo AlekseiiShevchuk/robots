@@ -33,8 +33,8 @@ class Language extends Model
         return self::where('is_active_for_admin', 1)->get();
     }
 
-    static function isActiveForUsers()
+    static function isActiveForUsers($fields = null)
     {
-        return self::where('is_active_for_users', 1)->get();
+        return self::where('is_active_for_users', 1)->get($fields);
     }
 }

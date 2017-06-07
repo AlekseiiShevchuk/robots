@@ -1,8 +1,12 @@
+(!!!) You must send "device-id" in request header for each request (!!!)
+(!) Best practice to send "Content-Type":"application/json" in request header for each request (!)
+
 Endpoint "maps" has next methods:
-GET http://robomaze.k-3soft.com/api/v1/maps - get all maps
 GET http://robomaze.k-3soft.com/api/v1/maps/:map_id - get map by ID
-POST http://robomaze.k-3soft.com/api/v1/maps - create NEW map
-{"settings":"your string with any settings you need"}
-PUT http://robomaze.k-3soft.com/api/v1/maps/:map_id - update map by ID
-{"settings":"your string with any settings you need"}
-DELETE http://robomaze.k-3soft.com/api/v1/maps/:map_id - delete map by ID
+
+Endpoint "UserProfile" has next methods:
+GET http://robomaze.k-3soft.com/api/v1/profile - get user profile
+POST http://robomaze.k-3soft.com/api/v1/profile?language=:language_iso_code - set new language for current profile (return updated user profile)
+
+Endpoint "Languages" has next methods:
+GET http://robomaze.k-3soft.com/api/v1/languages - get all available Languages and Translation Items
