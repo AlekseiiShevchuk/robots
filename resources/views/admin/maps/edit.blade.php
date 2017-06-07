@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <h3 class="page-title">@lang('quickadmin.maps.title')</h3>
     
     {!! Form::model($map, ['method' => 'PUT', 'route' => ['admin.maps.update', $map->id]]) !!}
 
-    <div class="panel panel-default">
+    <div id="app" class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_edit')
         </div>
@@ -30,10 +31,55 @@
                     @endif
                 </div>
             </div>
+
+            <input type="hidden" name="settings" :value="serializedSettings()">
+
+            <div class="row">
+                <div class="col-xs-3 form-group">
+                    <label for="x_length" class="control-label">Length of the playing square: </label>
+                    <input v-model.number="x_length" name="x_length" type="number" min="2" max="12" class="input input-circle" :disabled="disabled">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3 form-group">
+                    <label for="y_length" class="control-label">Height of the playing square: </label>
+                    <input v-model.number="y_length" name="y_length" type="number" min="2" max="12" :disabled="disabled"><br>
+                </div>
+            </div>
+
+            <template
+                    v-if="drew">
+                <div v-for="(y, y_index) in y_length" class="row row-styled">
+                    <div v-for="(x, x_index) in x_length"
+                         :class="[cellClass(x,y_length - y_index)]"
+                    @click="saveCurrentCellSettings(x,y_length - y_index)">
+                </div>
+
+        </div>
+
+        </template>
             
         </div>
     </div>
+    <script src="/js/create_map.js"></script>
+    <script type="text/javascript">
+        // apply current map settings for online map editor
+        app._data.x_length = {!! json_decode($map->settings)->x_length !!};
+        app._data.y_length = {!! json_decode($map->settings)->y_length !!};
 
+        @foreach(json_decode($map->settings)->map as $item)
+        app._data.settings['x_' + {{$item->x}} + 'y_' + {{$item->y}}]= {
+            class: 'col-xs-1 cell {{$item->type}}-cell',
+            type: '{{$item->type}}',
+        };
+        @endforeach
+
+        app._data.drew = true;
+        app._data.disabled = true;
+        app.$forceUpdate();
+
+    </script>
     {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop

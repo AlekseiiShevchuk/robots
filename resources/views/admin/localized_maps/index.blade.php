@@ -39,7 +39,7 @@
                                     <td></td>
                                 @endcan
 
-                                <td>{{ $localized_map->map->settings or '' }}</td>
+                                <td>{{ $localized_map->map->name or '' }}</td>
                                 <td>{{ $localized_map->language->name or '' }}</td>
                                 <td>{{ $localized_map->title }}</td>
                                 <td>{{ $localized_map->description }}</td>

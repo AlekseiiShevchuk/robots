@@ -44,7 +44,7 @@
         </div>
 
 
-        <button @click="drow" class="btn btn-primary":disabled="disabled">Draw square</button><br>
+        <button v-if="!drew" @click="drow" class="btn btn-primary":disabled="disabled">Draw Map</button><br>
 
         <template
                 v-if="drew">

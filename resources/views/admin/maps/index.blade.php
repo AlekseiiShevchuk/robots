@@ -22,8 +22,9 @@
                             <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                         @endcan
 
-                        <th>name</th>
-                        <th>@lang('quickadmin.maps.fields.settings')</th>
+                        <th>Name</th>
+                        <th>Settings</th>
+                        <th>Available Actions</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -38,6 +39,11 @@
 
                                 <td>{{ $map->name }}</td>
                                 <td>{!! $map->settings !!}</td>
+                                <td>
+                                    @foreach ($map->available_actions as $singleAvailableActions)
+                                        <span class="label label-info label-many">{{ $singleAvailableActions->name }}</span>
+                                    @endforeach
+                                </td>
                                 <td>
                                     @can('map_view')
                                     <a href="{{ route('admin.maps.show',[$map->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
