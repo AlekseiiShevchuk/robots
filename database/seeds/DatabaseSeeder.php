@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
         if (\App\Language::all()->first() == null) {
             $this->call(LanguagesSeed::class);
         }
+        if (\App\Action::all()->first() == null) {
+            $this->call(ActionsSeeder::class);
+        }
 
     }
 }
