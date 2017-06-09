@@ -68,7 +68,7 @@ COPY php.ini /usr/local/etc/php/
 
 RUN curl -L http://www.artoolkit.org/dist/artoolkit5/5.3/ARToolKit5-bin-5.3.2r1-Linux-x86_64.tar.gz > /tmp/artoolkit.tgz
 RUN cd /tmp
-RUN php tar xfz artoolkit.tgz
+RUN tar xfz artoolkit.tgz
 RUN cd share
 RUN php artoolkit5-setenv
 RUN cd ..
