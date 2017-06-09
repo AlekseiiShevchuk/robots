@@ -66,7 +66,5 @@ COPY php.ini /usr/local/etc/php/
 
 # install ARToolkit
 
-RUN curl -L http://www.artoolkit.org/dist/artoolkit5/5.3/ARToolKit5-bin-5.3.2r1-Linux-x86_64.tar.gz > /tmp/artoolkit.tgz
-RUN tar xfz /tmp/artoolkit.tgz
-RUN /var/www/share/artoolkit5-setenv
-RUN cp /tmp/bin/genTexData /bin
+RUN ./artoolkit/share/artoolkit5-setenv
+RUN cp artoolkit/bin/genTexData /bin
