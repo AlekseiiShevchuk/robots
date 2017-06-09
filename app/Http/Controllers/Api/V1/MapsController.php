@@ -13,6 +13,8 @@ class MapsController extends Controller
 
     public function show($id)
     {
-        return Map::findOrFail($id);
+        $map = Map::findOrFail($id)->load('available_actions')->makeHidden(['created_at', 'updated_at']);
+        $map->available_actions->makeHidden(['created_at', 'updated_at', 'pivot']);
+        return $map;
     }
 }

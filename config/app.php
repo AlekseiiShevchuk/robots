@@ -184,6 +184,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Milon\Barcode\BarcodeServiceProvider::class,
+        JapSeyz\Ar\ToolkitServiceProvider::class,
         
         /*
          * Application Service Providers...
