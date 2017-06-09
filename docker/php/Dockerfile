@@ -65,13 +65,13 @@ COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY php.ini /usr/local/etc/php/
 
 # install ARToolkit
-
-RUN sudo apt-get install tar
-RUN curl -L http://www.artoolkit.org/dist/artoolkit5/5.3/ARToolKit5-bin-5.3.2r1-Linux-x86_64.tar.gz > /tmp/artoolkit.tgz
-RUN cd /tmp
-RUN tar xfz artoolkit.tgz
-RUN cd share
-RUN sh artoolkit5-setenv
-RUN cd ./bin
-RUN cp genTexData /bin
-RUN genTexData
+#
+#RUN sudo apt-get install tar
+#RUN curl -L http://www.artoolkit.org/dist/artoolkit5/5.3/ARToolKit5-bin-5.3.2r1-Linux-x86_64.tar.gz > /tmp/artoolkit.tgz
+#RUN cd /tmp
+#RUN tar xfz artoolkit.tgz
+#RUN cd share
+#RUN sh artoolkit5-setenv
+#RUN cd ./bin
+#RUN cp genTexData /bin
+#RUN genTexData
