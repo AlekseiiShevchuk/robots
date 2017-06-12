@@ -65,14 +65,14 @@
             </li>
             @endcan
             
-            @can('localized_map_access')
+{{--            @can('localized_map_access')
             <li class="{{ $request->segment(2) == 'localized_maps' ? 'active' : '' }}">
                 <a href="{{ route('admin.localized_maps.index') }}">
                     <i class="fa fa-gears"></i>
                     <span class="title">@lang('quickadmin.localized-maps.title')</span>
                 </a>
             </li>
-            @endcan
+            @endcan--}}
             
             @can('action_access')
             <li class="{{ $request->segment(2) == 'actions' ? 'active' : '' }}">

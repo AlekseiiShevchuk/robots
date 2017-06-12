@@ -23,9 +23,7 @@ class UpdateLocalizedMapsRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'map_id' => 'required',
-            'language_id' => 'required',
+
         ];
     }
 }

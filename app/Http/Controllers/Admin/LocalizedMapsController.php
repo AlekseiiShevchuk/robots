@@ -40,7 +40,7 @@ class LocalizedMapsController extends Controller
         if (! Gate::allows('localized_map_create')) {
             return abort(401);
         }
-        $maps = \App\Map::get()->pluck('settings', 'id')->prepend('Please select', '');$languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');
+        $maps = \App\Map::get()->pluck('name', 'id')->prepend('Please select', '');$languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');
 
         return view('admin.localized_maps.create', compact('maps', 'languages'));
     }
@@ -61,7 +61,7 @@ class LocalizedMapsController extends Controller
 
 
 
-        return redirect()->route('admin.localized_maps.index');
+        return redirect()->route('admin.maps.index');
     }
 
 
@@ -76,7 +76,8 @@ class LocalizedMapsController extends Controller
         if (! Gate::allows('localized_map_edit')) {
             return abort(401);
         }
-        $maps = \App\Map::get()->pluck('settings', 'id')->prepend('Please select', '');$languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');
+        $maps = \App\Map::get()->pluck('name', 'id')->prepend('Please select', '');
+        $languages = \App\Language::isActiveForAdmin()->pluck('name', 'id')->prepend('Please select', '');
 
         $localized_map = LocalizedMap::findOrFail($id);
 
@@ -101,7 +102,7 @@ class LocalizedMapsController extends Controller
 
 
 
-        return redirect()->route('admin.localized_maps.index');
+        return redirect()->route('admin.maps.index');
     }
 
 

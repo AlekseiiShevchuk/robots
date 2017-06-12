@@ -23,7 +23,7 @@
                         @endcan
 
                         <th>Name</th>
-                        <th>Settings</th>
+                        {{--<th>Settings</th>--}}
                         <th>Available Actions</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -38,7 +38,7 @@
                                 @endcan
 
                                 <td>{{ $map->name }}</td>
-                                <td>{!! $map->settings !!}</td>
+                                {{--<td>{!! $map->settings !!}</td>--}}
                                 <td>
                                     @foreach ($map->available_actions as $singleAvailableActions)
                                         <span class="label label-info label-many">{{ $singleAvailableActions->name }}</span>
@@ -51,11 +51,14 @@
 --}}
                                     @foreach(\App\Language::isActiveForAdmin() as $language)
                                         @if($map->get_localization_id_or_false($language->id))
-                                            <a href="{{ route('admin.localized_maps.edit',[$map->get_localization_id_or_false($language->id)]) }}" class="btn btn-xs btn-info">Edit {{$language->name}} localization</a>
+                                            <a href="{{ route('admin.localized_maps.edit',[$map->get_localization_id_or_false($language->id)]) }}" class="btn btn-xs btn-success">Edit {{$language->name}} localization</a>
+                                        @else
+                                            <a href="{{ route('admin.localized_maps.create') }}?language_id={{$language->id}}&map_id={{$map->id}}" class="btn btn-xs btn-danger">Add {{$language->name}} localization</a>
                                         @endif
                                     @endforeach
+                                    <hr>
                                     @can('map_edit')
-                                    <a href="{{ route('admin.maps.edit',[$map->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
+                                    <a href="{{ route('admin.maps.edit',[$map->id]) }}" class="btn btn-xs btn-info">Edit Map</a>
                                     @endcan
                                     @can('map_delete')
                                     {!! Form::open(array(

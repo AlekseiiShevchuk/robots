@@ -78,7 +78,7 @@ var app = new Vue({
 
             for (y = 1; y <= this.y_length; y++) {
                 for (x = 1; x <= this.x_length; x++) {
-                    settingsForServer.map.push({'x': x, 'y': y, type: this.settings['x_' + x + 'y_' + y].type});
+                    settingsForServer.map.push({'x': x - 1, 'y': y - 1, type: this.settings['x_' + x + 'y_' + y].type});
                 }
             }
 

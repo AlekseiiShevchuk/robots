@@ -3,7 +3,7 @@
 @section('content')
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <h3 class="page-title">@lang('quickadmin.maps.title')</h3>
-    
+
     {!! Form::model($map, ['method' => 'PUT', 'route' => ['admin.maps.update', $map->id]]) !!}
 
     <div id="app" class="panel panel-default">
@@ -37,14 +37,16 @@
             <div class="row">
                 <div class="col-xs-3 form-group">
                     <label for="x_length" class="control-label">Length of the playing square: </label>
-                    <input v-model.number="x_length" name="x_length" type="number" min="2" max="12" class="input input-circle" :disabled="disabled">
+                    <input v-model.number="x_length" name="x_length" type="number" min="2" max="12"
+                           class="input input-circle" :disabled="disabled">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-3 form-group">
                     <label for="y_length" class="control-label">Height of the playing square: </label>
-                    <input v-model.number="y_length" name="y_length" type="number" min="2" max="12" :disabled="disabled"><br>
+                    <input v-model.number="y_length" name="y_length" type="number" min="2" max="12"
+                           :disabled="disabled"><br>
                 </div>
             </div>
 
@@ -53,13 +55,13 @@
                 <div v-for="(y, y_index) in y_length" class="row row-styled">
                     <div v-for="(x, x_index) in x_length"
                          :class="[cellClass(x,y_length - y_index)]"
-                    @click="saveCurrentCellSettings(x,y_length - y_index)">
+                         @click="saveCurrentCellSettings(x,y_length - y_index)">
+                    </div>
+
                 </div>
 
-        </div>
+            </template>
 
-        </template>
-            
         </div>
     </div>
     <script src="/js/create_map.js"></script>
@@ -69,13 +71,13 @@
         app._data.y_length = {!! json_decode($map->settings)->y_length !!};
 
         @foreach(json_decode($map->settings)->map as $item)
-        app._data.settings['x_' + {{$item->x}} + 'y_' + {{$item->y}}]= {
+            app._data.settings['x_' + {{$item->x +1}} +'y_' + {{$item->y +1}}] = {
             class: 'col-xs-1 cell {{$item->type}}-cell',
             type: '{{$item->type}}',
         };
         @endforeach
 
-        app._data.drew = true;
+            app._data.drew = true;
         app._data.disabled = true;
         app.$forceUpdate();
 

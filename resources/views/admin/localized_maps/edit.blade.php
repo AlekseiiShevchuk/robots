@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('map_id', 'Map*', ['class' => 'control-label']) !!}
-                    {!! Form::select('map_id', $maps, old('map_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::select('map_id', $maps, old('map_id'), ['class' => 'form-control select2', 'required', 'disabled']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('map_id'))
                         <p class="help-block">
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('language_id', 'Language*', ['class' => 'control-label']) !!}
-                    {!! Form::select('language_id', $languages, old('language_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::select('language_id', $languages, old('language_id'), ['class' => 'form-control select2', 'required', 'disabled']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('language_id'))
                         <p class="help-block">
