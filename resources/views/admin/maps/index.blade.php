@@ -45,9 +45,15 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    @can('map_view')
+{{--                                    @can('map_view')
                                     <a href="{{ route('admin.maps.show',[$map->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
                                     @endcan
+--}}
+                                    @foreach(\App\Language::isActiveForAdmin() as $language)
+                                        @if($map->get_localization_id_or_false($language->id))
+                                            <a href="{{ route('admin.localized_maps.edit',[$map->get_localization_id_or_false($language->id)]) }}" class="btn btn-xs btn-info">Edit {{$language->name}} localization</a>
+                                        @endif
+                                    @endforeach
                                     @can('map_edit')
                                     <a href="{{ route('admin.maps.edit',[$map->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan

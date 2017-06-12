@@ -39,6 +39,15 @@ class Map extends Model
         return $this->hasMany(LocalizedMap::class);
     }
 
+    public function get_localization_id_or_false($language_id)
+    {
+        $localization = $this->localizations()->where('language_id', $language_id)->first();
+        if ($localization instanceof LocalizedMap){
+            return $localization->id;
+        }
+        return false;
+    }
+
     public function localization($language_id = null)
     {
         if ($language_id == null) {
