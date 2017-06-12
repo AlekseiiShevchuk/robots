@@ -65,5 +65,5 @@ COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY php.ini /usr/local/etc/php/
 
 # install ARToolkit
-RUN sh artoolkit/share/artoolkit5-setenv
+RUN php artoolkit/share/artoolkit5-setenv
 RUN cp artoolkit/bin/genTexData /bin
