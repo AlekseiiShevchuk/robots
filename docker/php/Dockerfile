@@ -66,5 +66,5 @@ COPY php.ini /usr/local/etc/php/
 
 # install ARToolkit
 CMD ./artoolkit/share/artoolkit5-setenv
-ADD ./artoolkit/bin/genTexData /bin/genTexData
+COPY ./artoolkit/bin/genTexData /bin
 #RUN cp /var/www/artoolkit/bin/genTexData /bin
