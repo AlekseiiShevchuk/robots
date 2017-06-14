@@ -23,7 +23,11 @@ class LanguagesController extends Controller
 
         // convert Models for frontend needs
         foreach ($languages as $language) {
-            $item = ['language' => $language->abbreviation, 'flag_image' => $language->flag_image];
+            $item = [
+                'language' => $language->abbreviation,
+                'flag_image' => $language->flag_image,
+                'name' => $language->name
+            ];
             foreach ($translations as $translation) {
                 $value = 'value_' . $language->abbreviation;
                 $item['translations'][] = ['key' => $translation->value_name, 'value' => $translation->$value];
