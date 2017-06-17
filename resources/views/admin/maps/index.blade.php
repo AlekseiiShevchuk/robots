@@ -46,7 +46,7 @@
                                     @endforeach
                                 </td>
                                     <td>
-                                        <a href="{{env('APP_URL') . 'map_data/' . $map->id . '/marker.jpg'}}">
+                                        <a href="{{env('APP_URL') . 'map_data/' . $map->id . '/marker.jpg'}}" target="_blank">
                                         <img src="{{env('APP_URL') . 'map_data/' . $map->id . '/marker.jpg'}}" width="100" height="100">
                                         </a>
                                     </td>
