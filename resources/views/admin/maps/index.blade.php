@@ -25,6 +25,7 @@
                         <th>Name</th>
                         {{--<th>Settings</th>--}}
                         <th>Available Actions</th>
+                        <th>Marker image</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -44,6 +45,11 @@
                                         <span class="label label-info label-many">{{ $singleAvailableActions->name }}</span>
                                     @endforeach
                                 </td>
+                                    <td>
+                                        <a href="{{env('APP_URL') . 'map_data/' . $map->id . '/marker.jpg'}}">
+                                        <img src="{{env('APP_URL') . 'map_data/' . $map->id . '/marker.jpg'}}" width="100" height="100">
+                                        </a>
+                                    </td>
                                 <td>
 {{--                                    @can('map_view')
                                     <a href="{{ route('admin.maps.show',[$map->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
