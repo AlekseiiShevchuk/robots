@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
 
-       /* if ($e instanceof MethodNotAllowedHttpException) {
+        if ($e instanceof MethodNotAllowedHttpException) {
             return response()->json('Method Not Allowed', 405);
         }
 
@@ -89,7 +89,7 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof ServiceUnavailableHttpException) {
             return response()->json('Authentication Service is not available. Try later.', 503);
-        }*/
+        }
 
         return parent::render($request, $e);
     }

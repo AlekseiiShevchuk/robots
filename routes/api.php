@@ -15,7 +15,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1', 'as' => 'api.'], funct
     Route::get('test-marker-generation', function (){
 
         $toolkit = new JapSeyz\Ar\Toolkit();
-        $toolkit->add(base_path('public/images/source_for_marker/empty_marker.jpg'));
+        $toolkit->add(base_path('public/map_data/empty_marker.jpg'));
     });
 
 });
