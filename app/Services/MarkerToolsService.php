@@ -14,7 +14,7 @@ class MarkerToolsService
             mkdir(public_path('map_data/' . $mapId), 0777);
         }
 
-        $fileName = DNS1DFacade::getBarcodePNGPath($mapId, "C128");
+        $fileName = DNS1DFacade::getBarcodePNGPath((string)$mapId, "C128");
 
         Image::make(public_path($fileName))->resize(null, 60, function ($constraint) {
             $constraint->aspectRatio();

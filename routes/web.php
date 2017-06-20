@@ -1,5 +1,9 @@
 <?php
-Route::get('/', function () { return redirect('/admin/home'); });
+use App\Services\MarkerToolsService;
+
+Route::get('/', function () {
+    return redirect('/admin/home');
+});
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
@@ -26,11 +30,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('maps', 'Admin\MapsController');
     Route::post('maps_mass_destroy', ['uses' => 'Admin\MapsController@massDestroy', 'as' => 'maps.mass_destroy']);
     Route::resource('localized_maps', 'Admin\LocalizedMapsController');
-    Route::post('localized_maps_mass_destroy', ['uses' => 'Admin\LocalizedMapsController@massDestroy', 'as' => 'localized_maps.mass_destroy']);
+    Route::post('localized_maps_mass_destroy',
+        ['uses' => 'Admin\LocalizedMapsController@massDestroy', 'as' => 'localized_maps.mass_destroy']);
     Route::resource('actions', 'Admin\ActionsController');
-    Route::post('actions_mass_destroy', ['uses' => 'Admin\ActionsController@massDestroy', 'as' => 'actions.mass_destroy']);
+    Route::post('actions_mass_destroy',
+        ['uses' => 'Admin\ActionsController@massDestroy', 'as' => 'actions.mass_destroy']);
     Route::resource('localized_actions', 'Admin\LocalizedActionsController');
-    Route::post('localized_actions_mass_destroy', ['uses' => 'Admin\LocalizedActionsController@massDestroy', 'as' => 'localized_actions.mass_destroy']);
+    Route::post('localized_actions_mass_destroy',
+        ['uses' => 'Admin\LocalizedActionsController@massDestroy', 'as' => 'localized_actions.mass_destroy']);
 
     Route::resource('translation_items', 'Admin\TranslationItemsController');
     Route::post('translation_items_mass_destroy',
@@ -42,4 +49,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::get('/excel-export/{type}', 'Admin\TranslationItemsController@exportExcel');
 
+});
+
+Route::get('/regenerate-markers', function () {
+    foreach (\App\Map::all() as $map){
+        MarkerToolsService::saveBarCodeForMap($map->id);
+        MarkerToolsService::createMarker($map->id);
+        MarkerToolsService::createMarkerSettings($map->id);
+    }
 });
