@@ -4,9 +4,9 @@
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <h3 class="page-title">@lang('quickadmin.maps.title')</h3>
 
+    <div id="app" class="panel panel-default">
     {!! Form::model($map, ['method' => 'PUT', 'route' => ['admin.maps.update', $map->id]]) !!}
 
-    <div id="app" class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_edit')
         </div>
@@ -31,6 +31,7 @@
                     @endif
                 </div>
             </div>
+            <button v-if="drew" @click.stop.prevent="drawFromScratch" class="btn btn-primary">Clear and draw from scratch</button><br>
 
             <input type="hidden" name="settings" :value="serializedSettings()">
 
@@ -49,7 +50,7 @@
                            :disabled="disabled"><br>
                 </div>
             </div>
-
+            <button v-if="!drew" @click="drow" class="btn btn-primary":disabled="disabled">Draw Map</button><br>
             <template
                     v-if="drew">
                 <div v-for="(y, y_index) in y_length" class="row row-styled">
@@ -63,6 +64,8 @@
             </template>
 
         </div>
+    {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger', ':disabled="!drew"']) !!}
+    {!! Form::close() !!}
     </div>
     <script src="/js/create_map.js"></script>
     <script type="text/javascript">
@@ -82,7 +85,5 @@
         app.$forceUpdate();
 
     </script>
-    {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
 @stop
 

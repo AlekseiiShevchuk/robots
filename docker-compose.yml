@@ -33,7 +33,6 @@ services:
     volumes:
       - ./:/var/www
       - composer_cache:/home/docker/.composer/cache
-      - /bin:/var/www/artoolkit/bin
     depends_on:
       - "mysql"
   mysql:

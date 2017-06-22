@@ -28,6 +28,13 @@ var app = new Vue({
             this.disabled = true;
             this.drew = true;
         },
+
+        drawFromScratch: function () {
+          this.drew = false;
+          this.settings = {};
+          this.disabled = false;
+          this.$forceUpdate();
+        },
         saveCurrentCellSettings: function (x, y) {
             if (x === 1 && y === 1) {
                 return

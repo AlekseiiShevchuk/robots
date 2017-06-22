@@ -27,6 +27,8 @@
             </div>
         </div>
 
+        <button v-if="drew" @click.stop.prevent="drawFromScratch" class="btn btn-primary">Clear and draw from scratch</button><br>
+
         <input type="hidden" name="settings" :value="serializedSettings()">
 
         <div class="row">
