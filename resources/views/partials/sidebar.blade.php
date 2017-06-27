@@ -83,14 +83,14 @@
             </li>
             @endcan
             
-            @can('localized_action_access')
+{{--            @can('localized_action_access')
             <li class="{{ $request->segment(2) == 'localized_actions' ? 'active' : '' }}">
                 <a href="{{ route('admin.localized_actions.index') }}">
                     <i class="fa fa-gears"></i>
                     <span class="title">@lang('quickadmin.localized-actions.title')</span>
                 </a>
             </li>
-            @endcan
+            @endcan--}}
             <li class="{{ $request->segment(2) == 'translation_items' ? 'active' : '' }}">
                 <a href="{{ route('admin.translation_items.index') }}">
                     <i class="fa fa-gears"></i>

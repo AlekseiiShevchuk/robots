@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('language_id', 'Language*', ['class' => 'control-label']) !!}
-                    {!! Form::select('language_id', $languages, old('language_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::select('language_id', $languages, old('language_id'), ['class' => 'form-control select2', 'disabled']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('language_id'))
                         <p class="help-block">
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('action_id', 'Action*', ['class' => 'control-label']) !!}
-                    {!! Form::select('action_id', $actions, old('action_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::select('action_id', $actions, old('action_id'), ['class' => 'form-control select2', 'disabled']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('action_id'))
                         <p class="help-block">
@@ -34,6 +34,8 @@
                     @endif
                 </div>
             </div>
+            <input type="hidden" name="action_id" value="{{request()->get('action_id')}}">
+            <input type="hidden" name="language_id" value="{{request()->get('language_id')}}">
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('name', 'Name*', ['class' => 'control-label']) !!}

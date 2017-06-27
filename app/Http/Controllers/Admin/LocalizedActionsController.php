@@ -61,7 +61,7 @@ class LocalizedActionsController extends Controller
 
 
 
-        return redirect()->route('admin.localized_actions.index');
+        return redirect()->route('admin.actions.index');
     }
 
 
@@ -101,7 +101,7 @@ class LocalizedActionsController extends Controller
 
 
 
-        return redirect()->route('admin.localized_actions.index');
+        return redirect()->route('admin.actions.index');
     }
 
 

@@ -23,7 +23,6 @@
                 </div>
             </div>
             <div class="row">
-                <input type="hidden" name="map_id" value="{{request()->get('map_id')}}">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('language_id', 'Language*', ['class' => 'control-label']) !!}
                     {!! Form::select('language_id', $languages, old('language_id'), ['class' => 'form-control select2', 'required', 'disabled']) !!}
@@ -35,6 +34,7 @@
                     @endif
                 </div>
             </div>
+                <input type="hidden" name="map_id" value="{{request()->get('map_id')}}">
                 <input type="hidden" name="language_id" value="{{request()->get('language_id')}}">
             <div class="row">
                 <div class="col-xs-12 form-group">

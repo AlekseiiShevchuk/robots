@@ -23,9 +23,6 @@ class UpdateLocalizedActionsRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'language_id' => 'required',
-            'action_id' => 'required',
             'name' => 'required',
         ];
     }

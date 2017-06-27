@@ -22,7 +22,7 @@
                             <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                         @endcan
 
-                        <th>@lang('quickadmin.actions.fields.name')</th>
+                        <th>Internal name <br> (for Admin Panel)</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -37,9 +37,14 @@
 
                                 <td>{{ $action->name }}</td>
                                 <td>
-                                    @can('action_view')
-                                    <a href="{{ route('admin.actions.show',[$action->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
-                                    @endcan
+                                        @foreach(\App\Language::isActiveForAdmin() as $language)
+                                            @if($action->get_localization_id_or_false($language->id))
+                                                <a href="{{ route('admin.localized_actions.edit',[$action->get_localization_id_or_false($language->id)]) }}" class="btn btn-xs btn-success">Edit {{$language->name}} localization</a>
+                                            @else
+                                                <a href="{{ route('admin.localized_actions.create') }}?language_id={{$language->id}}&action_id={{$action->id}}" class="btn btn-xs btn-danger">Add {{$language->name}} localization</a>
+                                            @endif
+                                        @endforeach
+                                        <hr>
                                     @can('action_edit')
                                     <a href="{{ route('admin.actions.edit',[$action->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
