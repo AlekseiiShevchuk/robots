@@ -15,7 +15,7 @@ class Action extends Model
 {
     protected $fillable = ['name'];
     protected $appends = [
-        'localized_name',
+        //'localized_name',
         'sound',
     ];
     protected $hidden = [];
