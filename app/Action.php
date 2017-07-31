@@ -18,7 +18,7 @@ class Action extends Model
         'localized_name',
         'sound',
     ];
-    protected $hidden = ['name'];
+    protected $hidden = [];
 
     public function localizations()
     {
