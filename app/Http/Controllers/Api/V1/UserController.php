@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Api\SetUserLanguageRequest;
 use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class UserController extends Controller
 {
@@ -18,6 +19,9 @@ class UserController extends Controller
 
     public function updateProfile(SetUserLanguageRequest $request)
     {
+        if(!(Language::where('abbreviation', $request->get('language'))->first() instanceof Language)){
+            throw new BadRequestHttpException('Invalid iso code');
+        }
         $user = Auth::user();
         $user->language_id = Language::where('abbreviation', $request->get('language'))->first()->id;
         $user->save();

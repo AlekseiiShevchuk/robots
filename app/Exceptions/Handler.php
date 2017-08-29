@@ -87,9 +87,23 @@ class Handler extends ExceptionHandler
             return response()->json($e->getMessage(), 403);
         }
 
+        if ($e instanceof AuthenticationException && ($request->expectsJson() || $request->wantsJson() || $request->isJson())) {
+            return response()->json($e->getMessage(), 401);
+        }
+
         if ($e instanceof ServiceUnavailableHttpException) {
             return response()->json('Authentication Service is not available. Try later.', 503);
         }
+
+        if ($e instanceof AccessDeniedHttpException && ($request->expectsJson() || $request->wantsJson() || $request->isJson())) {
+            return response()->json($e->getMessage(), 403);
+        }
+
+
+        if ($e && ($request->expectsJson() || $request->wantsJson() || $request->isJson())) {
+            return response()->json($e->getMessage(), 503);
+        }
+
 
         return parent::render($request, $e);
     }

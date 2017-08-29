@@ -26,7 +26,7 @@ class SetUserLanguageRequest extends FormRequest
     public function rules()
     {
         return [
-            'language' => ['required', Rule::in(Language::isActiveForUsers(['abbreviation'])->pluck('abbreviation')->toArray())]
+            'language' => 'required'
         ];
     }
 }
