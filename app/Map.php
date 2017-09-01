@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class Map extends Model
 {
-    protected $fillable = ['settings', 'name'];
+    protected $fillable = ['settings', 'name', 'is_visible'];
     protected $appends = [
         'title',
         'description',

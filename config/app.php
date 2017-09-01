@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Robomaze Admin Panel v2',
+    'name' => 'Roboline Admin Panel',
 
     /*
     |--------------------------------------------------------------------------

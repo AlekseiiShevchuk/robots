@@ -31,6 +31,20 @@
                     @endif
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('is_visible', 'Is Visible?', ['class' => 'control-label']) !!}
+                    {!! Form::hidden('is_visible', 0) !!}
+                    {!! Form::checkbox('is_visible', 1, old('is_visible')) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('is_visible'))
+                        <p class="help-block">
+                            {{ $errors->first('is_visible') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
             <button v-if="drew" @click.stop.prevent="drawFromScratch" class="btn btn-primary">Clear and draw from scratch</button><br>
 
             <input type="hidden" name="settings" :value="serializedSettings()">
