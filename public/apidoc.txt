@@ -2,11 +2,14 @@
 (!) Best practice to send "Content-Type":"application/json" in request header for each request (!)
 
 Endpoint "maps" has next methods:
-GET http://robomaze.k-3soft.com/api/v1/maps/:map_id - get map by ID
+GET http://roboline.miber.se/api/v1/maps/:map_id - get map by ID
 
 Endpoint "UserProfile" has next methods:
-GET http://robomaze.k-3soft.com/api/v1/profile - get user profile
-POST http://robomaze.k-3soft.com/api/v1/profile?language=:language_iso_code - set new language for current profile (return updated user profile)
+GET http://roboline.miber.se/api/v1/profile - get user profile
+POST http://roboline.miber.se/api/v1/profile?language=:language_iso_code - set new language for current profile (return updated user profile)
 
 Endpoint "Languages" has next methods:
-GET http://robomaze.k-3soft.com/api/v1/languages - get all available Languages and Translation Items
+GET http://roboline.miber.se/api/v1/languages - get all available Languages and Translation Items
+
+GET http://roboline.miber.se/api/v1/get-minimum-required-build-for-ios-apps
+GET http://roboline.miber.se/api/v1/get-minimum-required-build-for-android-apps

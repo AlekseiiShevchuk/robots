@@ -12,7 +12,14 @@
                 </a>
             </li>
 
-            
+            @can('setting_access')
+                <li class="{{ $request->segment(2) == 'settings' ? 'active' : '' }}">
+                    <a href="{{ route('admin.settings.index') }}">
+                        <i class="fa fa-gears"></i>
+                        <span class="title">@lang('quickadmin.settings.title')</span>
+                    </a>
+                </li>
+            @endcan
             @can('user_management_access')
             <li class="treeview">
                 <a href="#">

@@ -142,6 +142,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('localized_action_delete', function ($user) {
             return in_array($user->role_id, [1]);
         });
+
         // Auth gates for: Translation items
         Gate::define('translation_item_access', function ($user) {
             return in_array($user->role_id, [1]);
@@ -156,6 +157,23 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
         Gate::define('translation_item_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
+        // Auth gates for: Settings
+        Gate::define('setting_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('setting_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('setting_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('setting_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('setting_delete', function ($user) {
             return in_array($user->role_id, [1]);
         });
 

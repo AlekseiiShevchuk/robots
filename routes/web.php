@@ -49,6 +49,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::get('/excel-export/{type}', 'Admin\TranslationItemsController@exportExcel');
 
+    Route::resource('settings', 'Admin\SettingsController');
+    Route::post('settings_mass_destroy',
+        ['uses' => 'Admin\SettingsController@massDestroy', 'as' => 'settings.mass_destroy']);
+
 });
 
 Route::get('/regenerate-markers', function () {
