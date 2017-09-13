@@ -52,21 +52,30 @@ var app = new Vue({
                 currentCell.type = 'diamond';
                 currentCell.class = 'col-xs-1 cell diamond-cell';
                 this.$forceUpdate();
-                console.log('new Type = ' + currentCell.type + ' new Class = ' + currentCell.class);
 
             } else if (currentCell.type === 'diamond') {
+
+                currentCell.type = 'diamond_invisible';
+                currentCell.class = 'col-xs-1 cell diamond_invisible-cell';
+                this.$forceUpdate();
+
+            } else if (currentCell.type === 'diamond_invisible') {
 
                 currentCell.type = 'finish';
                 currentCell.class = 'col-xs-1 cell finish-cell';
                 this.$forceUpdate();
-                console.log('new Type = ' + currentCell.type + ' new Class = ' + currentCell.class);
 
             } else if (currentCell.type === 'finish') {
+
+                currentCell.type = 'finish_invisible';
+                currentCell.class = 'col-xs-1 cell finish_invisible-cell';
+                this.$forceUpdate();
+
+            } else if (currentCell.type === 'finish_invisible') {
 
                 currentCell.type = 'free';
                 currentCell.class = 'col-xs-1 cell free-cell';
                 this.$forceUpdate();
-                console.log('new Type = ' + currentCell.type + ' new Class = ' + currentCell.class);
 
             }
 

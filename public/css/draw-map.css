@@ -19,8 +19,18 @@
     background-size: cover;
 }
 
+.diamond_invisible-cell {
+    background-image: url("/images/diamond_invisible.jpg");
+    background-size: cover;
+}
+
 .finish-cell {
     background-image: url("/images/finish.jpg");
+    background-size: cover;
+}
+
+.finish_invisible-cell {
+    background-image: url("/images/finish_invisible.jpg");
     background-size: cover;
 }
 
